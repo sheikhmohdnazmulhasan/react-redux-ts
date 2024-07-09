@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// export interface TCounterState { count: number }
-const initialState = { count: 0 };
+export interface TCounterState { count: number }
+const initialState: TCounterState = { count: 0 };
 
 const counterSlice = createSlice({
     name: 'counter',
@@ -15,7 +15,9 @@ const counterSlice = createSlice({
 
         // decrement the counter;
         decrement: (state) => {
-            state.count -= 1;
+            if (state.count >= 1) {
+                state.count -= 1;
+            }
         },
 
     }

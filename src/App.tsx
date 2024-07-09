@@ -1,9 +1,10 @@
-import { useDispatch, useSelector } from "react-redux"
 import { decrement, increment } from "./redux/features/counterSlice";
+import { useAppDispatch, useAppSelector } from "./redux/hook";
+
 
 function App() {
-  const count = useSelector((state) => state.counter.count)
-  const dispatch = useDispatch();
+  const count = useAppSelector((state) => state.counter.count)
+  const dispatch = useAppDispatch();
 
   return (
     <div className=" h-screen w-full flex justify-center items-center">
@@ -13,7 +14,7 @@ function App() {
 
         <p className="text-3xl font-semibold px-10">{count}</p>
 
-        <button onClick={() => dispatch(decrement())} className="px-3 py-2 bg-red-500 text-white font-semibold rounded-md">Decrement</button>
+        <button onClick={() => dispatch(decrement())} className={`px-3 py-2 ${count ? 'bg-red-500' : 'bg-gray-300'} text-white font-semibold rounded-md`}>Decrement</button>
       </div>
     </div>
   )
